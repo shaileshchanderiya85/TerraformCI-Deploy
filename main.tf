@@ -18,8 +18,8 @@ resource "azurerm_resource_group" "terrform_practices" {
   location = "North Europe"
 }
 
-resource "azurerm_app_service_plan" "plandemo8" {
-  name                = "plandemo8"
+resource "azurerm_app_service_plan" "plandemo10" {
+  name                = "plandemo10"
   location            = "North Europe"
   resource_group_name = "terrform_practices"
 
@@ -35,7 +35,7 @@ resource "azurerm_app_service" "firedemo45" {
   name                = "firedemo12"
   location            = "North Europe"
   resource_group_name = "terrform_practices"
-  app_service_plan_id = azurerm_app_service_plan.plandemo8.id
+  app_service_plan_id = azurerm_app_service_plan.plandemo10.id
 
   site_config {
     always_on                = false
@@ -44,7 +44,7 @@ resource "azurerm_app_service" "firedemo45" {
   }
 
   depends_on = [
-    azurerm_app_service_plan.plandemo8
+    azurerm_app_service_plan.plandemo10
 
   ]
 
