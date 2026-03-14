@@ -20,7 +20,7 @@ resource "azurerm_resource_group" "terrform_practices" {
 
 resource "azurerm_app_service_plan" "plandemo8" {
   name                = "plandemo8"
-  location            = "West Europe"
+  location            = "North Europe"
   resource_group_name = "terrform_practices"
 
   sku {
@@ -32,8 +32,8 @@ resource "azurerm_app_service_plan" "plandemo8" {
 }
 
 resource "azurerm_app_service" "firedemo45" {
-  name                = "firedemo45"
-  location            = "West Europe"
+  name                = "firedemo12"
+  location            = "North Europe"
   resource_group_name = "terrform_practices"
   app_service_plan_id = azurerm_app_service_plan.plandemo8.id
 
@@ -53,7 +53,7 @@ resource "azurerm_app_service" "firedemo45" {
 resource "azurerm_mssql_server" "sqlserver000000001234" {
   name                         = "sqlserver000000001234"
   resource_group_name          = "terrform_practices"
-  location                     = "West Europe"
+  location                     = "North Europe"
   version                      = "12.0"
   administrator_login          = "sqlusr"
   administrator_login_password = var.sql_password
@@ -65,9 +65,10 @@ resource "azurerm_mssql_database" "app-db" {
   server_id    = azurerm_mssql_server.sqlserver000000001234.id
   collation    = "SQL_Latin1_General_CP1_CI_AS"
   license_type = "LicenseIncluded"
-  max_size_gb  = 2
+  max_size_gb  = 3
   sku_name     = "basic"
   depends_on = [
     azurerm_mssql_server.sqlserver000000001234
   ]
 }
+
